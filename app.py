@@ -55,6 +55,8 @@ if __name__ == "__main__":
         st.session_state.data_view1_key = None
     if 'data_view2_key' not in st.session_state:
         st.session_state.data_view2_key = None
+    if 'data_view_update' not in st.session_state:
+        st.session_state.data_view_update = False
 
 
 

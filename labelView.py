@@ -22,6 +22,7 @@ def priority_col_update():
         st.session_state.main_folder_df.loc[priority_cond, "Priority"] = priority_tag
         # st.session_state.main_folder_df.loc[~priority_cond, "Priority"] = ""
         print(f"priority_tag_info {priority_tag} 업데이트 완료")
+    st.session_state.data_view_update = True
 
 
 def kwPush_col_update():
@@ -44,6 +45,7 @@ def kwPush_col_update():
         st.session_state.main_folder_df.loc[kwpush_cond, "KW Push"] = kwpush_tag
         # st.session_state.main_folder_df.loc[~kwpush_cond, "KW Push"] = ""
         print(f"kwpush_tag_info {kwpush_tag} 업데이트 완료")
+    st.session_state.data_view_update = True
 
 
 def phase_col_update():
@@ -66,6 +68,7 @@ def phase_col_update():
         st.session_state.main_folder_df.loc[phase_cond, "Phase"] = phase_tag
         # st.session_state.main_folder_df.loc[~phase_cond, "Phase"] = ""
         print(f"phase_tag_info {phase_tag} 업데이트 완료")
+    st.session_state.data_view_update = True
 
 
 def diffi_col_update():
@@ -88,6 +91,7 @@ def diffi_col_update():
         st.session_state.main_folder_df.loc[diffi_cond, "Difficulty Level"] = diffi_tag
         # st.session_state.main_folder_df.loc[~diffi_cond, "Difficulty Level"] = ""
         print(f"diffi_tag_info {diffi_tag} 업데이트 완료")
+    st.session_state.data_view_update = True
 
 
 def priority_col_update2():
@@ -110,6 +114,7 @@ def priority_col_update2():
         st.session_state.uncate_df.loc[priority_cond, "Priority"] = priority_tag
         # st.session_state.uncate_df.loc[~priority_cond, "Priority"] = ""
         print(f"priority_tag_info {priority_tag} 업데이트 완료")
+    st.session_state.data_view_update = True
 
 
 def kwPush_col_update2():
@@ -132,7 +137,7 @@ def kwPush_col_update2():
         st.session_state.uncate_df.loc[kwpush_cond, "KW Push"] = kwpush_tag
         # st.session_state.uncate_df.loc[~kwpush_cond, "KW Push"] = ""
         print(f"kwpush_tag_info {kwpush_tag} 업데이트 완료")
-
+    st.session_state.data_view_update = True
 
 def phase_col_update2():
     pprint.pprint(st.session_state.phase_tag_info2)
@@ -154,7 +159,7 @@ def phase_col_update2():
         st.session_state.uncate_df.loc[phase_cond, "Phase"] = phase_tag
         # st.session_state.uncate_df.loc[~phase_cond, "Phase"] = ""
         print(f"phase_tag_info {phase_tag} 업데이트 완료")
-
+    st.session_state.data_view_update = True
 
 def diffi_col_update2():
     pprint.pprint(st.session_state.diffi_tag_info2)
@@ -176,7 +181,7 @@ def diffi_col_update2():
         st.session_state.uncate_df.loc[diffi_cond, "Difficulty Level"] = diffi_tag
         # st.session_state.uncate_df.loc[~diffi_cond, "Difficulty Level"] = ""
         print(f"diffi_tag_info {diffi_tag} 업데이트 완료")
-
+    st.session_state.data_view_update = True
 
 def LabelView():
     normal_col, uncate_col = st.tabs([":blue[Categorized View]", ":green[UnCategorized View]"])
@@ -523,6 +528,7 @@ def LabelView():
                         ] = parents
                         st.info(f"{child}폴더가 {parents}폴더로 이동하였습니다")
                         st.dataframe(st.session_state.main_folder_df)
+                        st.session_state.data_view_update = True
 
             st.markdown("---")
             st.subheader("Merge Sub Folder")
@@ -547,7 +553,7 @@ def LabelView():
                     st.session_state.main_folder_df.loc[child_cond, 'Sub Folder'] = parent_sub_folder
                     st.info(f"{child_sub_folder}폴더가 {parent_sub_folder}폴더로 이동하였습니다")
                     st.dataframe(st.session_state.main_folder_df.loc[child_cond])
-
+                    st.session_state.data_view_update = True
 
         with uncate_col:
             a, b, c, d = st.tabs(
@@ -891,6 +897,7 @@ def LabelView():
                         ] = parents
                         st.info(f"{child}폴더가 {parents}폴더로 이동하였습니다")
                         st.dataframe(st.session_state.uncate_df)
+                        st.session_state.data_view_update = True
 
             sub_merge_push1, sub_merge_push2, sub_merge_push3, sub_merge_push4 = st.columns(4)
             main_folder = sub_merge_push1.selectbox("Choose Main Folder", folder_list, key="uncate_sub_merge1")
@@ -913,3 +920,4 @@ def LabelView():
                     st.session_state.uncate_df.loc[child_cond, 'Sub Folder'] = parent_sub_folder
                     st.info(f"{child_sub_folder}폴더가 {parent_sub_folder}폴더로 이동하였습니다")
                     st.dataframe(st.session_state.uncate_df.loc[child_cond])
+                    st.session_state.data_view_update = True

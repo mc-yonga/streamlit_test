@@ -1,3 +1,5 @@
+import cmdstanpy.install_cmdstan
+
 from superDev import *
 
 def make_leftside_of_dataview(data):
@@ -62,9 +64,11 @@ def generate_uuid():
 
 def DataView():
     if st.session_state.make_folder:
-        key1, key2 = generate_uuid()
-        st.session_state.data_view1_key = key1
-        st.session_state.data_view2_key = key2
+        if st.session_state.data_view_update:
+            print(f'키 새로 발급~!!!!')
+            key1, key2 = generate_uuid()
+            st.session_state.data_view1_key = key1
+            st.session_state.data_view2_key = key2
 
         all_df = pd.concat(
             [st.session_state.main_folder_df, st.session_state.uncate_df]
@@ -131,7 +135,7 @@ def DataView():
                     fit_columns_on_grid_load=True,
                     ensure_data_fits=True,
                     enable_quicksearch=True,
-                    key=st.session_state.data_view1_key,
+                    key= st.session_state.data_view1_key,
                 )
 
             with uncate_tab:
@@ -180,8 +184,9 @@ def DataView():
                     fit_columns_on_grid_load=True,
                     ensure_data_fits=True,
                     enable_quicksearch=True,
-                    key=st.session_state.data_view2_key,
+                    key = st.session_state.data_view2_key,
                 )
 
-        del st.session_state[key1]
-        del st.session_state[key2]
+        del st.session_state[st.session_state.data_view1_key]
+        del st.session_state[st.session_state.data_view2_key]
+        st.session_state.data_view_update = False

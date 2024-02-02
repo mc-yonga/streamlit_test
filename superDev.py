@@ -539,6 +539,7 @@ def make_folder(data, word_count, main_keywords_huddle, sub_keywords_huddle):
 
     st.session_state.load_state = False  # unique normalized data가 만들어졌으면 load state를 True로 전환, 이렇게 해야 make folder가 실행이 안됨
     st.session_state.make_folder = True
+    st.session_state.data_view_update = True
 
 
 def data_from_db():
@@ -585,6 +586,7 @@ def data_from_db():
 
     st.session_state.load_state = False  # unique normalized data가 만들어졌으면 load state를 True로 전환, 이렇게 해야 make folder가 실행이 안됨
     st.session_state.make_folder = True
+    st.session_state.data_view_update = True
 
 if __name__ == "__main__":
     table_list = fetch_table_list()
