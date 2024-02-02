@@ -22,12 +22,18 @@ try:
 except AttributeError:
     pass
 
+host = st.secrets["host"]
+port = st.secrets["port"]
+dbname = st.secrets["dbname"]
+user = st.secrets["user"]
+password = st.secrets["password"]
+
 conn = psycopg2.connect(
-    host="db.yjolqcetitlpjbwwxnly.supabase.co",
-    port="5432",
-    dbname="postgres",
-    user="postgres",
-    password="superDev1!@#$%^&",
+    host=host,
+    port=port,
+    dbname=dbname,
+    user=user,
+    password=password,
 )
 cursor = conn.cursor()
 
