@@ -2,3 +2,4 @@ psycopg2-binary
 nltk
 streamlit-aggrid
 openpyxl
+cmdstanpy
