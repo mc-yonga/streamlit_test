@@ -2,7 +2,6 @@ from uploadView import *
 from dataView import *
 from labelView import *
 from tagView import *
-from manageTagView import *
 
 if __name__ == "__main__":
     st.set_page_config(layout="wide")
